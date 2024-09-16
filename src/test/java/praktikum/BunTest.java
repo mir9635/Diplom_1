@@ -1,25 +1,23 @@
 package praktikum;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BunTest {
-    private Bun bun;
 
-    @BeforeEach
-    public void setUp() {
-        bun = new Bun("Sesame", 50.0f);
-    }
+    @ParameterizedTest
+    @CsvSource({
+            "Student Buns, 0.99",
+            "Platinum Buns, 10000000000.0",
+            "Special Buns, 0.0",
+            "Standard Buns, 100.0"
+    })
+    public void testBunCreation(String name, float price) {
+        Bun bun = new Bun(name, price);
 
-    @Test
-    public void testGetName() {
-        assertEquals("Sesame", bun.getName());
-    }
-
-    @Test
-    public void testGetPrice() {
-        assertEquals(50.0f, bun.getPrice(), 0);
+        assertEquals(name, bun.getName());
+        assertEquals(price, bun.getPrice(), 0.001);
     }
 }

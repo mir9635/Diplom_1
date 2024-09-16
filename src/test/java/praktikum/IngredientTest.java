@@ -6,25 +6,43 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IngredientTest {
-    private Ingredient ingredient;
+    private Ingredient ingredientFilling;
+    private Ingredient ingredientSauce;
 
     @BeforeEach
     public void setUp() {
-        ingredient = new Ingredient(IngredientType.FILLING, "Lettuce", 10.0f);
+        ingredientFilling = new Ingredient(IngredientType.FILLING, "Lettuce", 10.0f);
+        ingredientSauce = new Ingredient(IngredientType.SAUCE, "Traditional galactic sauce", 15.0f);
+
     }
 
     @Test
-    public void testGetType() {
-        assertEquals(IngredientType.FILLING, ingredient.getType());
+    public void testGetTypeFilling() {
+        assertEquals(IngredientType.FILLING, ingredientFilling.getType());
     }
 
     @Test
-    public void testGetName() {
-        assertEquals("Lettuce", ingredient.getName());
+    public void testGetNameFilling() {
+        assertEquals("Lettuce", ingredientFilling.getName());
     }
 
     @Test
-    public void testGetPrice() {
-        assertEquals(10.0f, ingredient.getPrice(), 0);
+    public void testGetPriceFilling() {
+        assertEquals(10.0f, ingredientFilling.getPrice(), 0);
+    }
+
+    @Test
+    public void testGetTypeSauce() {
+        assertEquals(IngredientType.SAUCE, ingredientSauce.getType());
+    }
+
+    @Test
+    public void testGetNameSauce() {
+        assertEquals("Traditional galactic sauce", ingredientSauce.getName());
+    }
+
+    @Test
+    public void testGetPriceSauce() {
+        assertEquals(15.0f, ingredientSauce.getPrice(), 0);
     }
 }
